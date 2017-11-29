@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Northwind.Repositorios.SqlServer.Ado
 {
-    public class CategoriaRepositorio:RepositorioBase
+    public class FornecedorRepositorio : RepositorioBase
     {
         public DataTable Selecionar()
         {
-            var instrucao = @"SELECT [CategoryID]
-                                    ,[CategoryName]
-                                    FROM [Northwind].[dbo].[Categories]";
+            var instrucao = @"SELECT [SupplierID]
+                              ,[CompanyName]
+                          FROM [Northwind].[dbo].[Suppliers]
+                          ORDER BY CompanyName";
 
             return Selecionar(instrucao);
         }
-
     }
 }

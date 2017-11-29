@@ -11,11 +11,21 @@ namespace Northwind.Repositorios.SqlServer.Ado.Tests
     [TestClass()]
     public class produtoRepositorioTests
     {
+
+        private ProdutoRepositorio _repositorio = new ProdutoRepositorio();
+
         [TestMethod()]
         public void SelecionarPorCategoriaTest()
         {
-            var repositorio = new ProdutoRepositorio();
-            var produtoDataTable = repositorio.SelecionarPorCategoria(1);
+            var produtoDataTable = _repositorio.SelecionarPorCategoria(1);
+
+            Assert.AreNotEqual(0, produtoDataTable.Rows.Count);
+        }
+
+        [TestMethod()]
+        public void SelecionarPorFornecedorTest()
+        {
+            var produtoDataTable = _repositorio.SelecionarPorFornecedor(1);
 
             Assert.AreNotEqual(0, produtoDataTable.Rows.Count);
         }

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Repositorios.SqlS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Repositorios.SqlServer.AdoTests", "Northwind.Repositorios.SqlServer.AdoTests\Northwind.Repositorios.SqlServer.AdoTests.csproj", "{51619807-40CD-420E-8582-8D43F73BB303}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.WebForms", "Northwind.WebForms\Northwind.WebForms.csproj", "{AFA7BB9F-AF1A-47B1-ADDA-F7FE8E17D5D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{51619807-40CD-420E-8582-8D43F73BB303}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51619807-40CD-420E-8582-8D43F73BB303}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51619807-40CD-420E-8582-8D43F73BB303}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFA7BB9F-AF1A-47B1-ADDA-F7FE8E17D5D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFA7BB9F-AF1A-47B1-ADDA-F7FE8E17D5D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFA7BB9F-AF1A-47B1-ADDA-F7FE8E17D5D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFA7BB9F-AF1A-47B1-ADDA-F7FE8E17D5D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

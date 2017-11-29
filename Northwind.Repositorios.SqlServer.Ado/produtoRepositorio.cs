@@ -10,43 +10,32 @@ using System.Threading.Tasks;
 
 namespace Northwind.Repositorios.SqlServer.Ado
 {
-    public class ProdutoRepositorio
+    public class ProdutoRepositorio : RepositorioBase
     {
+        //Todo: refatorar para usar o base.selecionar
         public DataTable SelecionarPorCategoria(int categoriaId)
         {
-            var produtoDataTable = new DataTable();
-            var stringConexao = 
-                ConfigurationManager
-                .ConnectionStrings["NorthwindConnectionString"]
-                .ConnectionString;
-                //"Server=.\\SQLEXPRESS;Database=Northwind;Trusted_Connection=True";
-
-            using (var conexao = new SqlConnection(stringConexao))
-            {
-
-
-                conexao.Open();
-
-                var instrucao = $@"SELECT [ProductID]
+            var instrucao = $@"SELECT [ProductID]
                                   ,[ProductName]
                                   ,[UnitPrice]
                                   ,[UnitsInStock]
                                 FROM [Northwind].[dbo].[Products]
                                 WHERE CategoryID = @CategoryID";
 
-                using (var comando = new SqlCommand(instrucao, conexao))
-                {
-                    comando.Parameters.AddWithValue("@CategoryID", categoriaId);
+            return Selecionar(instrucao, new SqlParameter("@CategoryID", categoriaId));
+        }
 
-                    using (var dataAdapter = new SqlDataAdapter(comando))
-                    {
-                        dataAdapter.Fill(produtoDataTable);
-                    }
-                }
+        public DataTable SelecionarPorFornecedor(int fornecedorId)
+        {
 
-            }
+            var instrucao = $@"SELECT [ProductID]
+                                  ,[ProductName]
+                                  ,[UnitPrice]
+                                  ,[UnitsInStock]
+                                FROM [Northwind].[dbo].[Products]
+                                WHERE SupplierID = @SupplierID";
 
-            return produtoDataTable;
+            return Selecionar(instrucao, new SqlParameter("@SupplierID", fornecedorId));
         }
 
     }

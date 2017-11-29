@@ -9,16 +9,15 @@ using System.Threading.Tasks;
 namespace Northwind.Repositorios.SqlServer.Ado.Tests
 {
     [TestClass()]
-    public class CategoriaRepositorioTests
+    public class FornecedorRepositorioTests
     {
         [TestMethod()]
         public void SelecionarTest()
         {
-            var repositorio = 
-                new CategoriaRepositorio();
-            var categoriaDataTable = repositorio.Selecionar();
+            var repositorio = new FornecedorRepositorio();
+            var fornecedorDataTable = repositorio.Selecionar();
 
-            Assert.AreNotEqual(0,categoriaDataTable.Rows.Count);
+            Assert.AreNotEqual(0, fornecedorDataTable.Rows.Count);
         }
     }
 }
