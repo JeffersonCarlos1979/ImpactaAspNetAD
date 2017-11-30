@@ -56,8 +56,13 @@
     <Compile Include="FornecedorRepositorioTests.cs" />
     <Compile Include="produtoRepositorioTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrasportadoraRepositorioTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Northwind.Dominio\Northwind.Dominio.csproj">
+      <Project>{45405c03-b4d9-4e02-a75b-0f5fc0ff5fa7}</Project>
+      <Name>Northwind.Dominio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Northwind.Repositorios.SqlServer.Ado\Northwind.Repositorios.SqlServer.Ado.csproj">
       <Project>{90EF9AED-70BE-45AC-BBBD-EE4FB769B0F2}</Project>
       <Name>Northwind.Repositorios.SqlServer.Ado</Name>

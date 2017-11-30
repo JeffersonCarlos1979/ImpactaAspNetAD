@@ -2,6 +2,7 @@
 using Northwind.Repositorios.SqlServer.Ado;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,11 @@ namespace Northwind.Repositorios.SqlServer.Ado.Tests
             var categoriaDataTable = repositorio.Selecionar();
 
             Assert.AreNotEqual(0,categoriaDataTable.Rows.Count);
+
+            foreach (DataRow registro in categoriaDataTable.Rows)
+            {
+                Console.WriteLine($"{registro["CategoryID"]} - {registro["CategoryName"]}");
+            }
         }
     }
 }

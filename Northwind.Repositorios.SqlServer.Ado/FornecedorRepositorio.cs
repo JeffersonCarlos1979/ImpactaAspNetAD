@@ -12,9 +12,9 @@ namespace Northwind.Repositorios.SqlServer.Ado
         public DataTable Selecionar()
         {
             var instrucao = @"SELECT [SupplierID]
-                              ,[CompanyName]
-                          FROM [Northwind].[dbo].[Suppliers]
-                          ORDER BY CompanyName";
+                            ,[CompanyName]
+                            FROM [Northwind].[dbo].[Suppliers]
+                            ORDER BY CompanyName";
 
             return Selecionar(instrucao);
         }

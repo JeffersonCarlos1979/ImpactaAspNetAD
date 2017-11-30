@@ -14,5 +14,13 @@ namespace Northwind.WebForms
 
 
         }
+
+        protected void criterioRadioButtonList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //var rbl = (RadioButtonList)sender;
+            criterioMultiView.ActiveViewIndex =Convert.ToInt32(criterioRadioButtonList.SelectedItem.Value);
+
+            produtosGrid.DataSourceID = $"produtosPor{criterioRadioButtonList.SelectedItem.Text}DataSource";
+        }
     }
 }
