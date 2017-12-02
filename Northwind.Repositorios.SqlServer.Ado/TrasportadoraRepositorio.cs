@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Northwind.Repositorios.SqlServer.Ado
 {
-    public class TrasportadoraRepositorio : RepositorioListBase
+    public class TransportadoraRepositorio : RepositorioListBase
     {
         private String _stringConexao =
             ConfigurationManager
@@ -19,107 +19,33 @@ namespace Northwind.Repositorios.SqlServer.Ado
 
         public List<Transportadora> Selecionar()
         {
-            var transportadoras = new List<Transportadora>();
-
-            using (var conexao = new SqlConnection(_stringConexao))
-            {
-                conexao.Open();
-
-                using (var comando = new SqlCommand("TransportadoraSelecionar", conexao))
-                {
-                    comando.CommandType = CommandType.StoredProcedure;
-
-                    using (var registro = comando.ExecuteReader())
-                    {
-                        while (registro.Read())
-                        {
-                            transportadoras.Add(Mapear(registro));
-                        }
-                    }
-
-
-                }
-
-            }
-
-            return transportadoras;
+            return ExecuteReader("TransportadoraSelecionar", Mapear);
         }
 
-        public Transportadora Selecionar(int id)
+        public Transportadora Selecionar(Int32 id)
         {
-            Transportadora transportadora = null;
-
-            using (var conexao = new SqlConnection(_stringConexao))
-            {
-                conexao.Open();
-
-                using (var comando = new SqlCommand("TransportadoraSelecionar", conexao))
-                {
-                    comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.Add(new SqlParameter("@ShipperID", id));
-
-                    using (var registro = comando.ExecuteReader())
-                    {
-                        if (registro.Read())
-                        {
-                            transportadora = Mapear(registro);
-                        }
-                    }
-                }
-            }
-            return transportadora;
+            return ExecuteReader(
+                "TransportadoraSelecionar", 
+                Mapear, 
+                new SqlParameter("@ShipperID", id)
+                ).SingleOrDefault();
+           
         }
 
         public void Inserir(Transportadora transportadora)
         {
 
-            using (var conexao = new SqlConnection(_stringConexao))
-            {
-                conexao.Open();
-
-                using (var comando = new SqlCommand("TransportadoraInserir", conexao))
-                {
-                    comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.AddRange(Mapear(transportadora));
-
-                    transportadora.Id = Convert.ToInt32(comando.ExecuteScalar());
-                }
-            }
+            transportadora.Id = Convert.ToInt32(ExecuteScalar("TransportadoraInserir", Mapear(transportadora)));
         }
 
         public void Atualizar(Transportadora transportadora)
         {
 
-            //using (var conexao = new SqlConnection(_stringConexao))
-            //{
-            //    conexao.Open();
-
-            //    using (var comando = new SqlCommand("TransportadoraAtualizar", conexao))
-            //    {
-            //        comando.CommandType = CommandType.StoredProcedure;
-            //        comando.Parameters.AddRange(Mapear(transportadora));
-
-            //        comando.ExecuteNonQuery();
-            //    }
-            //}
             ExecuteNomQuery("TransportadoraAtualizar", Mapear(transportadora));
         }
 
         public void Excluir(Int32 id)
         {
-
-            //using (var conexao = new SqlConnection(_stringConexao))
-            //{
-            //    conexao.Open();
-
-            //    using (var comando = new SqlCommand("TransportadoraExcluir", conexao))
-            //    {
-            //        comando.CommandType = CommandType.StoredProcedure;
-            //        //comando.Parameters.Add(new SqlParameter("@ShipperID", id));
-            //        comando.Parameters.AddWithValue("@ShipperID", id);
-            //        comando.ExecuteNonQuery();
-            //    }
-            //}
             ExecuteNomQuery("TransportadoraExcluir", new SqlParameter("@ShipperID", id));
         }
 
@@ -131,7 +57,7 @@ namespace Northwind.Repositorios.SqlServer.Ado
                 new SqlParameter("@phone",transportadora.Telefone)
             };
 
-            if (transportadora.Id>0)
+            if (transportadora.Id > 0)
             {
                 parametros.Add(new SqlParameter("@ShipperID", transportadora.Id));
             }

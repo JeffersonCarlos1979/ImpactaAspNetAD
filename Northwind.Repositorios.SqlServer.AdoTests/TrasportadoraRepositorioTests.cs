@@ -8,7 +8,7 @@ namespace Northwind.Repositorios.SqlServer.Ado.Tests
     [TestClass()]
     public class TrasportadoraRepositorioTests
     {
-        TrasportadoraRepositorio _rep = new TrasportadoraRepositorio();
+        TransportadoraRepositorio _rep = new TransportadoraRepositorio();
 
         [TestMethod()]
         public void SelecionarTest()
