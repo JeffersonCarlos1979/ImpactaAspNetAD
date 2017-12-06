@@ -17,7 +17,11 @@ namespace Loja.Repositorios.SqlServer.EF.ModelConfiguration
                 .HasPrecision(9, 2) ;
 
             HasRequired(p => p.Categoria);
-                
+
+            //Criação da chave estrangeira ligando 1x1 produto e imagem 
+            HasOptional(p => p.imagem)
+                .WithRequired(pi => pi.produto)
+                .WillCascadeOnDelete(true);
         }
     }
 }

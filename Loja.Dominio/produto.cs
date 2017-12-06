@@ -9,9 +9,11 @@ namespace Loja.Dominio
     public class Produto
     {
         public int Id { get; set; }
-        public Categoria Categoria { get; set; }
+        public virtual Categoria Categoria { get; set; }
         public String Nome { get; set; }
         public Decimal Preco { get; set; }
         public int Estoque { get; set; }
+        public bool Descontinuado { get; set; }
+        public virtual ProdutoImagem imagem { get; set; }
     }
 }
