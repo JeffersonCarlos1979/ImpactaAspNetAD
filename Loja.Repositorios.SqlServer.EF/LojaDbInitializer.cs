@@ -26,7 +26,7 @@ namespace Loja.Repositorios.SqlServer.EF
                     Nome = "Grampeador",
                     Estoque=44,
                     Preco=21.44m,
-                    Descontinuado=false,
+                    Ativo=false,
                     Categoria = context.Categorias
                     .Where(c => c.Nome == "Papelaria")
                     .Single()
@@ -35,7 +35,7 @@ namespace Loja.Repositorios.SqlServer.EF
                     Nome = "PenDrive",
                     Estoque = 49,
                     Preco = 21.49m,
-                    Descontinuado = false,
+                    Ativo = false,
                     Categoria = context.Categorias
                     .Where(c => c.Nome == "Informática")
                     .Single()

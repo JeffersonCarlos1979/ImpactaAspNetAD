@@ -71,14 +71,14 @@ namespace Loja.Repositorios.SqlServer.EF.Tests
         [TestMethod]
         public void InsererProdutoComNovaCategoria()
         {
-            if (!_db.Produtos.Any(p => p.Nome == "Barbeador"))
+            if (!_db.Produtos.Any(p => p.Nome == "Pen drive"))
             {
                 var barbeador = new Produto()
                 {
-                    Nome = "Barbeador",
-                    Estoque = 20,
-                    Preco = 35.45m,
-                    Categoria = new Categoria { Nome = "Perfumaria" }
+                    Nome = "Pen drive",
+                    Estoque = 22,
+                    Preco = 22.12m,
+                    Categoria = new Categoria { Nome = "Informática" }
                 };
 
                 _db.Produtos.Add(barbeador);

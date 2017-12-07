@@ -13,7 +13,9 @@ namespace Loja.Dominio
         public String Nome { get; set; }
         public Decimal Preco { get; set; }
         public int Estoque { get; set; }
-        public bool Descontinuado { get; set; }
+        public bool Ativo { get; set; }
         public virtual ProdutoImagem imagem { get; set; }
+        
+
     }
 }
