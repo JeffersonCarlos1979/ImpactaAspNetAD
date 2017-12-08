@@ -26,14 +26,14 @@ namespace Loja.Mvc.Helpers
         {
             var produto = new Produto();
 
-            if (viewModel.imagem != null && viewModel.imagem.ContentLength > 0)
+            if (viewModel.Imagem != null && viewModel.Imagem.ContentLength > 0)
             {
-                using (var reader = new BinaryReader(viewModel.imagem.InputStream))
+                using (var reader = new BinaryReader(viewModel.Imagem.InputStream))
                 {
-                    produto.imagem = new ProdutoImagem
+                    produto.Imagem = new ProdutoImagem
                     {
-                        Bytes = reader.ReadBytes(viewModel.imagem.ContentLength),
-                        ContentType = viewModel.imagem.ContentType
+                        Bytes = reader.ReadBytes(viewModel.Imagem.ContentLength),
+                        ContentType = viewModel.Imagem.ContentType
                     };
                 }
             }
@@ -77,22 +77,22 @@ namespace Loja.Mvc.Helpers
 
             produto.Categoria = dbContext.Categorias.Single(c => c.Id == viewModel.CategoriaId);
 
-            if (viewModel.imagem != null && viewModel.imagem.ContentLength > 0)
+            if (viewModel.Imagem != null && viewModel.Imagem.ContentLength > 0)
             {
-                using (var reader = new BinaryReader(viewModel.imagem.InputStream))
+                using (var reader = new BinaryReader(viewModel.Imagem.InputStream))
                 {
-                    if (produto.imagem == null)
+                    if (produto.Imagem == null)
                     {
-                        produto.imagem = new ProdutoImagem
+                        produto.Imagem = new ProdutoImagem
                         {
-                            Bytes = reader.ReadBytes(viewModel.imagem.ContentLength),
-                            ContentType = viewModel.imagem.ContentType
+                            Bytes = reader.ReadBytes(viewModel.Imagem.ContentLength),
+                            ContentType = viewModel.Imagem.ContentType
                         };
                     }
                     else
                     {
-                        produto.imagem.Bytes = reader.ReadBytes(viewModel.imagem.ContentLength);
-                        produto.imagem.ContentType = viewModel.imagem.ContentType;
+                        produto.Imagem.Bytes = reader.ReadBytes(viewModel.Imagem.ContentLength);
+                        produto.Imagem.ContentType = viewModel.Imagem.ContentType;
                     }
                 }
             }

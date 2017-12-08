@@ -26,7 +26,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Ativo)
         </th>
+ 
         <th></th>
+        <th></th>>
     </tr>
 
 @foreach (var item in Model) {
@@ -46,6 +48,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Ativo)
         </td>
+        <td>
+            <img src="~/ProdutoImagem/Miniatura?produtoId=@item.Id" />
+        </td>
+
 
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

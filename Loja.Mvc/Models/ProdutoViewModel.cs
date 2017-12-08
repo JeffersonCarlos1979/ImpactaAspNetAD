@@ -25,6 +25,6 @@ namespace Loja.Mvc.Models
         [Display(Name ="Categoria")]
         public int? CategoriaId { get; set; }
         public List<SelectListItem> Categorias { get; set; } = new List<SelectListItem>();
-        public HttpPostedFileBase imagem { get; set; }
+        public HttpPostedFileBase Imagem { get; set; }
     }
 }
